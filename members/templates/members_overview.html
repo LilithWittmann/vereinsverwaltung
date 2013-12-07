@@ -1,0 +1,54 @@
+{% extends "site_base.html" %}
+
+
+{% block title %}Mitglieder{% endblock %}
+
+{% block html_head %}
+    <meta name="robots" content="index, follow, noarchive">
+{% endblock %}
+
+{% block main_content %}
+
+<div class="table-responsive">
+  <table class="table table-bordered table-striped">
+
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Zahlungsdatum</th>
+        <th>Eintrittsdatum</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for member in members%}
+      <tr>
+        <td>
+          {{ member }}
+        </td>
+        <td>
+        	{{member.next_pay_date}}
+        </td>
+        </td>
+        <td>
+        	{{member.created_at}}
+        </td>
+        <td>
+        	<a href="{% url 'member_edit' member.id%}">edit</a>
+        </td>
+        <td>
+        <a href="{% url 'member_delete' member.id%}">delete</a>
+        </td>
+
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+<a href="{% url 'member_create'%}" class="btn btn-default">neues Mitglied</a>
+
+
+
+
+{% endblock %}

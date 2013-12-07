@@ -1,0 +1,49 @@
+{% extends "site_base.html" %}
+
+
+{% block title %}Mitglieder anlegen/editieren{% endblock %}
+
+{% block html_head %}
+    <meta name="robots" content="index, follow, noarchive">
+{% endblock %}
+
+{% block main_content %}
+
+<form class="form-horizontal" method="post" action="">
+    {% csrf_token %}
+
+    {% for field in form %}
+        {% if field.is_hidden %}
+            <div>{{ field }}</div>
+        {% else %}
+           <div class="form-group {% if field.errors %}error{% endif %}">
+                <label class="control-label col-sm-2"
+                       for="{{ field.id_for_label }}">{{ field.label }}:
+                    {% if field.field.required %}
+                        <span class="b-required">*</span>
+                    {% endif %}</label>
+
+                <div class="col-sm-8">
+                       <input type="text" name="{{ field.html_name }}" value="{{ field.value|default_if_none:"" }}" class="form-control" id="{{ field.id_for_label }}" placeholder="{{ field.help_text }}">
+                </div>
+                {% if field.errors %}
+                    {% for error in field.errors %}
+                        <span class="help-block">{{ error|escape }}</span>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endfor %}
+
+    {% if form.non_field_errors %}
+        <div class="control-group error">
+            {% for error in form.non_field_errors %}
+                <span class="help-block">{{ error|escape }}</span>
+            {% endfor %}
+        </div>
+    {% endif %}
+    <input type="submit" value="speichern" class="btn btn-primary">
+</form>
+
+
+{% endblock %}

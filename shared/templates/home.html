@@ -1,0 +1,45 @@
+{% extends "site_base.html" %}
+
+
+{% block title %}Home{% endblock %}
+
+{% block html_head %}
+    <meta name="robots" content="index, follow, noarchive">
+{% endblock %}
+
+{% block main_content %}
+    <div class="row">
+        <!-- Charts -->
+        {{member_report}}
+        <div class="col-md-12">
+            <h2>Overview</h2>
+            <h3>Umsätze</h3>
+            <canvas class="estimations-canvas" height="250"></canvas>
+            <h3>Mitglieder</h3>
+            <canvas class="members-canvas" height="250"></canvas>
+        </div>
+        <div class="col-md-12">
+            <hr>
+            <h2>To-Do`s</h2>
+            <table class="table table-bordered">
+                <tbody>
+                  <tr>
+                    <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic, sunt officiis exercitationem accusantium recusandae corrupti dolorem aut natus sint placeat reiciendis ad eveniet nesciunt inventore illum in quibusdam rerum reprehenderit!</td>
+                    <td class="text-right">
+                        <button class="btn btn-success btn-sm">Click</button>
+                        <button class="btn btn-default btn-sm">Click</button>       
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic, sunt officiis exercitationem accusantium recusandae corrupti dolorem aut natus sint placeat reiciendis ad eveniet nesciunt inventore illum in quibusdam rerum reprehenderit!</td>
+                    <td class="text-right">
+                        <button class="btn btn-danger btn-sm">Click</button>
+                        <button class="btn btn-default btn-sm">Click</button>       
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+
+{% endblock %}
