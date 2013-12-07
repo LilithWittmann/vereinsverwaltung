@@ -48,3 +48,4 @@ def member_edit(request, id):
 def member_delete(request, id):
     Member.objects.filter(id=id).delete()
     return HttpResponseRedirect(reverse('members_overview'))
+

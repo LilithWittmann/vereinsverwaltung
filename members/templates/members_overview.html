@@ -19,6 +19,7 @@
         <th>Eintrittsdatum</th>
         <th></th>
         <th></th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -39,6 +40,9 @@
         </td>
         <td>
         <a href="{% url 'member_delete' member.id%}">delete</a>
+        </td>
+        <td>
+        <a href="{% url 'document_user_list' member.id%}">documents</a>
         </td>
 
       </tr>

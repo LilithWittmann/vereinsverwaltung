@@ -1,0 +1,36 @@
+{% extends "site_base.html" %}
+
+
+{% block title %}Dokumente für {{ member }}{% endblock %}
+
+{% block html_head %}
+    <meta name="robots" content="index, follow, noarchive">
+{% endblock %}
+
+{% block main_content %}
+
+<div class="table-responsive">
+  <table class="table table-bordered table-striped">
+
+    <thead>
+      <tr>
+        <th>Name</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for document in documents%}
+      <tr>
+        <td>
+          <a target="__blank" href="{% url 'document_generate' document.id member.id %}">{{ document }}</a>
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+<a href="{% url 'document_create'%}" class="btn btn-default">neues Dokument</a>
+
+
+
+
+{% endblock %}

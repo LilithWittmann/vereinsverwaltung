@@ -1,0 +1,45 @@
+{% extends "site_base.html" %}
+
+
+{% block title %}Dokumente{% endblock %}
+
+{% block html_head %}
+    <meta name="robots" content="index, follow, noarchive">
+{% endblock %}
+
+{% block main_content %}
+
+<div class="table-responsive">
+  <table class="table table-bordered table-striped">
+
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for document in documents%}
+      <tr>
+        <td>
+          {{ document }}
+        </td>
+        <td>
+        	<a href="{% url 'document_edit' document.id%}">edit</a>
+        </td>
+        <td>
+        <a href="{% url 'document_delete' document.id%}">delete</a>
+        </td>
+
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+<a href="{% url 'document_create'%}" class="btn btn-default">neues Dokument</a>
+
+
+
+
+{% endblock %}

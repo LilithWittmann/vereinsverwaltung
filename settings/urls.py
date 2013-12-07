@@ -9,7 +9,9 @@ urlpatterns = patterns('',
     url(r'^$', 'shared.views.home', name='home'),
     url(r'^accounts/login/$', 'django.contrib.auth.views.login', {'template_name': 'login.html'}),
     url(r'^accounts/logout/$', 'django.contrib.auth.views.logout',  {'template_name': 'logout.html'}, name="auth_logout"),
+    url(r'^accounts/logout/$', 'django.contrib.auth.views.logout',  {'template_name': 'logout.html'}, name="auth_logout"),
     url(r'^members/', include('members.urls')),
+    url(r'^documents/', include('documents.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
