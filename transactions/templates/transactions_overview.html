@@ -1,20 +1,37 @@
-{% extends "site_base.html" %}
+{% extends "site_base.html" %} 
 
-
-{% block title %}Mitglieder{% endblock %}
+{% block title %}Umsätze{% endblock %} 
 
 {% block html_head %}
-    <meta name="robots" content="index, follow, noarchive">
-{% endblock %}
 
-{% block main_content %}
+<meta name="robots" content="index, follow, noarchive">
 
-{% for transaction in transactions %}
-	{{ transaction }}<br>
-{% endfor %}
-<a href="{% url 'member_create'%}" class="btn btn-default">neues Mitglied</a>
-
-
-
+{% endblock %} 
+{% block main_content %} 
+<h2>Umsätze</h2>
+<table class="table table-striped table-hover sorting-table">
+    <thead>
+        <tr>
+            <th>Datum</th>
+            <th>Debitor/Kreditor</th>
+            <th>Zweck</th>
+            <th>Betrag</th>
+        </tr>
+    </thead>
+    <tbody>
+		{% for transaction in transactions %} 
+	        <tr>
+	            <td>{{transaction.booking_date|date:"d.m.Y"}}</td>
+	            <td>{{transaction.name}}</td>
+	            <td>{{transaction.purpose}}</td>
+	            <td>{{transaction.amount}}</td>
+	        </tr>
+	        {% empty %}
+	        <tr colspan="4">
+	        	<td>Es sind noch keine Umsätze vorhanden</td>
+	        </tr>
+		{% endfor %}
+    </tbody>
+</table>
 
 {% endblock %}
