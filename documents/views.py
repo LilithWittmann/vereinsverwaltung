@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.template.response import TemplateResponse
 from django.core.urlresolvers import reverse
 from django.template import Context, Template
-
+from datetime import datetime
 from .models import Document
 from .forms import DocumentForm
 from members.models import Member
@@ -55,7 +55,7 @@ def document_generate(request, document_id, member_id):
 
     try:
         t = Template(doc.data)
-        text = t.render(Context({"member": member}))
+        text = t.render(Context({"member": member, "date": datetime.now()}))
     except:
         return HttpResponseRedirect(reverse('documents_overview'))
         

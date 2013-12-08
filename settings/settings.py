@@ -15,6 +15,9 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+FIGO_AUTH = "Bearer ASHWLIkouP2O6_bgA2wWReRhletgWKHYjLqDaqb0LFfamim9RjexTo22ujRIP_cjLiRiSyQXyt2kM1eXU2XLFZQ0Hro15HikJQT_eNeT_9XQ"
+
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
@@ -129,6 +132,7 @@ INSTALLED_APPS = (
     'members',
     'shared',
     'documents',
+    'transactions',
     'south',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
