@@ -15,7 +15,7 @@ class Transaction(models.Model):
     purpose = models.CharField(max_length=200, verbose_name="Verwendungszweck")
     name = models.CharField(max_length=200, verbose_name="Name")
     currency = models.CharField(max_length=6, verbose_name="Währung")
-    amount = models.IntegerField(verbose_name=u'Betrag') 
+    amount = models.DecimalField(verbose_name=u'Betrag', decimal_places=2, max_digits=14) 
     account_number = models.CharField(max_length=40, verbose_name="Kontonummer")
     visited = models.BooleanField(verbose_name=u'besucht')
     modification_timestamp = models.DateTimeField(verbose_name=u'Änderunsgzeitpunkt')
