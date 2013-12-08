@@ -4,17 +4,18 @@
         <meta name="robots" content="index, follow, noarchive">
     {% endblock %} 
 {% block main_content %}
-<h2>Mitglieder</h2>
+<h2>
+    Mitglieder 
+    <a href="{% url 'member_create'%}" class="btn btn-success">neues Mitglied</a>
+</h2>
+<hr>
 <table class="table table-striped table-hover sorting-table">
     <thead>
         <tr>
             <th>Name</th>
             <th>Zahlungsdatum</th>
             <th>Eintrittsdatum</th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
+            <th class="text-right">Optionen</th>
         </tr>
     </thead>
     <tbody>
@@ -30,26 +31,19 @@
             <td>
                 {{member.created_at}}
             </td>
-            <td>
-                <a href="{% url 'member_edit' member.id%}">edit</a>
+            <td class="text-right">
+                <div class="btn-group">
+                    <a href="{% url 'member_edit' member.id%}" class="btn btn-default btn-xs">Editieren</a>
+                    <a href="{% url 'document_user_list' member.id%}" class="btn btn-default btn-xs">Dokumente</a>
+                    <a href="{% url 'member_transactions' member.id%}" class="btn btn-default btn-xs">Umsätze</a>
+                    <a href="{% url 'member_delete' member.id%}" class="btn btn-danger btn-xs">Löschen</a>   
+                </div>
             </td>
-            <td>
-                <a href="{% url 'member_delete' member.id%}">delete</a>
-            </td>
-            <td>
-                <a href="{% url 'document_user_list' member.id%}">documents</a>
-            </td>
-            <td>
-                <a href="{% url 'member_transactions' member.id%}">transaktionen</a>
-            </td>
-
         </tr>
         {% endfor %}
     </tbody>
 </table>
 </div>
-<div class="container">
-    <a href="{% url 'member_create'%}" class="btn btn-default">neues Mitglied</a>
-</div>
+
 
 {% endblock %}

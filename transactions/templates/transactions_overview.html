@@ -25,7 +25,15 @@
 	            <td>{{transaction.booking_date|date:"d.m.Y"}}</td>
 	            <td>{{transaction.name}}</td>
 	            <td>{{transaction.purpose}}</td>
-	            <td>{% if transaction.member %}{{transaction.member}}{% else %}<a href="{% url 'transaction_to_member' transaction.id %}">verknüpfen</a>{%endif%}</td>
+	            <td>
+	            	{% if transaction.member %}
+	            		<a href="{% url 'member_edit' transaction.member.id %}">{{transaction.member}}</a>
+	            	{% else %}
+	            		<a href="{% url 'transaction_to_member' transaction.id %}" class="btn btn-default btn-xs">
+	            			verknüpfen
+	            		</a>
+	            	{%endif%}
+				</td>
 	            <td>{{transaction.amount}}</td>
 	        </tr>
 	        {% empty %}

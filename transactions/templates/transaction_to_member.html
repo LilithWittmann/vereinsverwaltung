@@ -1,18 +1,18 @@
 {% extends "site_base.html" %}
 
 
-{% block title %}Dokumente anlegen/editieren{% endblock %}
+{% block title %}Umsatz Verknüpfen{% endblock %}
 
 {% block html_head %}
     <meta name="robots" content="index, follow, noarchive">
 {% endblock %}
 
 {% block main_content %}
-
+<h2>Umsatz Verknüpfen</h2>
 <form class="form-horizontal" method="post" action="">
     {% csrf_token %}
 
-    {{ form }}
+    {{ form }} <br>
 
     {% if form.non_field_errors %}
         <div class="control-group error">

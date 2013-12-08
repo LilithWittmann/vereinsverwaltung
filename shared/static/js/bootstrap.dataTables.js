@@ -41,7 +41,7 @@ $.extend($.fn.dataTableExt.oPagination, {
 			};
 
 			$(nPaging).addClass('pagination').append(
-				'<ul class="pagination">' +
+				'<ul class="pagination pagination-sm">' +
 				'  <li class="prev disabled"><a href="#">&larr; ' + oLang.sPrevious + '</a></li>' +
 				'  <li class="next disabled"><a href="#">' + oLang.sNext + ' &rarr; </a></li>' +
 				'</ul>'
@@ -150,10 +150,10 @@ if ($.fn.DataTable.TableTools) {
 /* Table initialisation */
 $(document).ready(function() {
 	$('.sorting-table').dataTable({
-		"sDom": "<'row'<'col-lg-12'l><'col-lg-12'f>r>t<'row'<'col-lg-12'i><'col-lg-12'p>>",
+		"sDom": "<''<''l><''f>r>t<''<''i><''p>>",
 		"sPaginationType": "bootstrap",
 		"oLanguage": {
-			"sLengthMenu": "_MENU_ records per page"
+			"sLengthMenu": "_MENU_ Zeilen pro Seite"
 		}
 	});
 });

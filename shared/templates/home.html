@@ -1,18 +1,16 @@
 {% extends "site_base.html" %}
-
-
-{% block title %}Home{% endblock %}
-
-{% block html_head %}
-    <meta name="robots" content="index, follow, noarchive">
-{% endblock %}
-
+    {% block title %}Home{% endblock %}
+    {% block html_head %}
+        <meta name="robots" content="index, follow, noarchive">
+    {% endblock %}
 {% block main_content %}
+    <h2>Dashboard</h2>
+    <hr>
     <div class="row">
-        <!-- Charts -->
-        {{member_report}}
+        <!-- {{member_report}} -->
         <div class="col-md-12">
-            <h2>Overview</h2>
+            
+            <!-- Charts -->
             <h3>Umsätze</h3>
             <canvas class="estimations-canvas" height="250"></canvas>
             <h3>Mitglieder</h3>
