@@ -1,0 +1,28 @@
+{% extends "site_base.html" %}
+
+
+{% block title %}Dokumente anlegen/editieren{% endblock %}
+
+{% block html_head %}
+    <meta name="robots" content="index, follow, noarchive">
+{% endblock %}
+
+{% block main_content %}
+
+<form class="form-horizontal" method="post" action="">
+    {% csrf_token %}
+
+    {{ form }}
+
+    {% if form.non_field_errors %}
+        <div class="control-group error">
+            {% for error in form.non_field_errors %}
+                <span class="help-block">{{ error|escape }}</span>
+            {% endfor %}
+        </div>
+    {% endif %}
+    <input type="submit" value="speichern" class="btn btn-primary">
+</form>
+
+
+{% endblock %}

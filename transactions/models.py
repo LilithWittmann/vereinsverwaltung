@@ -22,6 +22,7 @@ class Transaction(models.Model):
     creation_timestamp = models.DateTimeField(verbose_name=u'Erstellungszeitpunkt')
     transaction_id = models.CharField(max_length=40, verbose_name="Transaktionsid")
     booking_text = models.CharField(max_length=40, verbose_name="Buchungstext")
+    member = models.ForeignKey(Member, blank=True, null=True)
     def __unicode__(self):
         return self.purpose
 

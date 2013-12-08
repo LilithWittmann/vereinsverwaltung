@@ -15,6 +15,7 @@
             <th>Datum</th>
             <th>Debitor/Kreditor</th>
             <th>Zweck</th>
+            <th>Von</th>
             <th>Betrag</th>
         </tr>
     </thead>
@@ -24,6 +25,7 @@
 	            <td>{{transaction.booking_date|date:"d.m.Y"}}</td>
 	            <td>{{transaction.name}}</td>
 	            <td>{{transaction.purpose}}</td>
+	            <td>{% if transaction.member %}{{transaction.member}}{% else %}<a href="{% url 'transaction_to_member' transaction.id %}">verknüpfen</a>{%endif%}</td>
 	            <td>{{transaction.amount}}</td>
 	        </tr>
 	        {% empty %}
