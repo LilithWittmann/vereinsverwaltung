@@ -8,6 +8,8 @@ If you want to include images convert them to a [data-url](http://dataurl.net/#d
 
 ## Placeholder
 
+### Member
+
 * {{member.forename}}
 * {{member.surname}}
 * {{member.phone}}
@@ -21,3 +23,11 @@ If you want to include images convert them to a [data-url](http://dataurl.net/#d
 * {{member.yearly_amount}}
 * {{member.created_at}}
 * {{member.updated_at}}
+
+### Current Date
+
+* {{data}}
+
+Format the date via: {{date|date:"d.m.Y"}}.
+
+[more info](https://docs.djangoproject.com/en/1.0/ref/templates/builtins/)
