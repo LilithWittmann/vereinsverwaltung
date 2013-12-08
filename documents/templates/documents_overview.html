@@ -4,38 +4,38 @@
     <meta name="robots" content="index, follow, noarchive">
   {% endblock %} 
 {% block main_content %}
-<h2>Dokumente</h2>
+<h2>
+    <span>Dokumente</span>
+    <a href="{% url 'document_create'%}" class="btn btn-success pull-right">neues Dokument</a>
+</h2>
 <hr>
-<div class="table-responsive">
-    <table class="table table-striped table-hover">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th class="text-right">Optionen</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for document in documents%}
-            <tr>
-                <td>
-                    {{ document }}
-                </td>
-                <td class="text-right">
-                    <div class="btn-group">
-                        <a href="{% url 'document_edit' document.id%}" class="btn btn-default btn-xs">edit</a>
-                        <a href="{% url 'document_delete' document.id%}" class="btn btn-danger btn-xs">delete</a>
-                    </div>
-                </td>
-            </tr>
-            {% empty %}
-            <tr>
-                <td colspan="3">
-                  Keine Dokumente Vorhanden
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</div>
-<a href="{% url 'document_create'%}" class="btn btn-default">neues Dokument</a>
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th class="text-right">Optionen</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for document in documents%}
+        <tr>
+            <td>
+                {{ document }}
+            </td>
+            <td class="text-right">
+                <div class="btn-group">
+                    <a href="{% url 'document_edit' document.id%}" class="btn btn-default btn-xs">edit</a>
+                    <a href="{% url 'document_delete' document.id%}" class="btn btn-danger btn-xs">delete</a>
+                </div>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="3">
+              Keine Dokumente Vorhanden
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 {% endblock %}

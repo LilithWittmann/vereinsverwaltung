@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block main_content %}
-<h2>Alles Transaktionen von {{member}}</h2>
+<h2>Umsätze von {{member}}</h2>
 <hr>
 <table class="table table-striped table-hover sorting-table">
     <thead>
@@ -33,7 +33,13 @@
 	            		<a href="{% url 'transaction_to_member' transaction.id %}" class="btn btn-default btn-xs">verknüpfen</a>
 	            	{%endif%}
 	            </td>
-	            <td>{{transaction.amount}}</td>
+	           	<td class="text-right">
+	            	{% if transaction.amount <= 0 %}
+	            		<span class="text-red">{{transaction.amount|floatformat:2}} €</span>
+	            	{% else %}
+	            		<span class="text-green">{{transaction.amount|floatformat:2}} €</span>
+	            	{%endif%}
+	            </td>
 	        </tr>
 	    {% empty %}
 	        <tr colspan="4">

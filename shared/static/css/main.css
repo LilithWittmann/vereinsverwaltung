@@ -2,3 +2,14 @@ canvas{
     width: 100% !important;
     height: auto !important;
 }
+
+.text-red{
+	color: red;
+}
+.text-green{
+	color: green;
+}
+
+.btn-controlls{
+	min-width: 170px;
+}

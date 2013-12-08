@@ -153,7 +153,12 @@ $(document).ready(function() {
 		"sDom": "<''<''l><''f>r>t<''<''i><''p>>",
 		"sPaginationType": "bootstrap",
 		"oLanguage": {
-			"sLengthMenu": "_MENU_ Zeilen pro Seite"
+			"sLengthMenu": "_MENU_ Zeilen pro Seite",
+			"sEmptyTable": "Deine Daten Vorhanden",
+			"sInfo": "Zeige _START_ von _END_",
+			"sInfoEmpty": "Zeige 0 to 0",
+			"sNext": "Nächste",
+			"sPrevious": "Vorige"
 		}
 	});
 });
