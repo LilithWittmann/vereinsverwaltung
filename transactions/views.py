@@ -18,7 +18,7 @@ def transactions_overview(request):
     transactions = Transaction.objects.all()
     return TemplateResponse(request, "transactions_overview.html", {"transactions": transactions})
 
-
+@login_required
 def transaction_to_member(request, transaction_id):
     if request.method == 'POST':
         form = TransactionMemberForm(request.POST, instance=Transaction.objects.filter(id=transaction_id).get())
@@ -33,7 +33,7 @@ def transaction_to_member(request, transaction_id):
         })
 
 
-
+@login_required 
 def member_transactions(request, member_id):
     member = Member.objects.filter(id=member_id).get()
     transactions = Transaction.objects.filter(member=member)
@@ -41,3 +41,5 @@ def member_transactions(request, member_id):
         "member": member,
         "transactions": transactions
         })
+
+
