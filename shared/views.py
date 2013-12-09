@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.http import Http404, HttpResponseRedirect, HttpResponse, HttpResponseBadRequest, HttpResponsePermanentRedirect
 from django.template.defaultfilters import striptags
 from django.utils.html import escape

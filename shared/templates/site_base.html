@@ -38,6 +38,15 @@
     <div id="wrap">
     {% include "header.html" %}
         <div class="container">
+
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-warning ">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+
             {% block main_content %}{% endblock %}
         </div>
     </div>

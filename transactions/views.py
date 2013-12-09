@@ -1,4 +1,4 @@
-# Create your views here.
+# -*- coding: utf-8 -*-
 from django.http import Http404, HttpResponseRedirect, HttpResponse, HttpResponseBadRequest, HttpResponsePermanentRedirect
 from django.template.defaultfilters import striptags
 from django.utils.html import escape
@@ -10,6 +10,8 @@ from .utils import sync_figo_transactions
 from .models import Transaction
 from .forms import TransactionMemberForm
 from members.models import Member
+from django.contrib import messages
+
 
 @login_required
 def transactions_overview(request):
@@ -22,6 +24,7 @@ def transaction_to_member(request, transaction_id):
         form = TransactionMemberForm(request.POST, instance=Transaction.objects.filter(id=transaction_id).get())
         if form.is_valid():
             form.save()
+            messages.success(request, "Transaktion mit Mitglied verknüpft")
             return HttpResponseRedirect(reverse('transactions_overview'))
     else:
         form = TransactionMemberForm(instance=Transaction.objects.filter(id=transaction_id).get())

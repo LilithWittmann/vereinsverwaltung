@@ -1,4 +1,4 @@
-# Create your views here.
+# -*- coding: utf-8 -*-
 from django.http import Http404, HttpResponseRedirect, HttpResponse, HttpResponseBadRequest, HttpResponsePermanentRedirect
 from django.template.defaultfilters import striptags
 from django.utils.html import escape
@@ -11,6 +11,8 @@ from datetime import datetime
 from .models import Document
 from .forms import DocumentForm
 from members.models import Member
+from django.contrib import messages
+
 
 
 @login_required
@@ -25,6 +27,8 @@ def document_create(request):
         if form.is_valid():
             form.save()
             form = DocumentForm()
+            messages.success(request, "Dokument angelegt!")
+
     else:
         form= DocumentForm()
 
@@ -39,6 +43,7 @@ def document_edit(request, id):
         form = DocumentForm(request.POST, instance=Document.objects.filter(id=id).get())
         if form.is_valid():
             form.save()
+            messages.success(request, "Dokument bearbeitet!")
             return HttpResponseRedirect(reverse('documents_overview'))
     else:
         form = DocumentForm(instance=Document.objects.filter(id=id).get())
@@ -65,6 +70,7 @@ def document_generate(request, document_id, member_id):
 @login_required
 def document_delete(request, id):
     Document.objects.filter(id=id).delete()
+    messages.success(request, "Dokument gelöscht!")
     return HttpResponseRedirect(reverse('documents_overview'))
 
 @login_required

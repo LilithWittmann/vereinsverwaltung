@@ -1,4 +1,4 @@
-# Create your views here.
+# -*- coding: utf-8 -*-
 from django.http import Http404, HttpResponseRedirect, HttpResponse, HttpResponseBadRequest, HttpResponsePermanentRedirect
 from django.template.defaultfilters import striptags
 from django.utils.html import escape
@@ -8,6 +8,7 @@ from django.template.response import TemplateResponse
 from django.core.urlresolvers import reverse
 from .models import Member
 from .forms import MemberForm
+from django.contrib import messages
 
 
 @login_required
@@ -22,6 +23,8 @@ def member_create(request):
         if form.is_valid():
             form.save()
             form = MemberForm()
+            messages.success(request, "Mitglied angelegt!")
+
     else:
         form= MemberForm()
 
@@ -36,6 +39,7 @@ def member_edit(request, id):
         form = MemberForm(request.POST, instance=Member.objects.filter(id=id).get())
         if form.is_valid():
             form.save()
+            messages.success(request, "Mitglied bearbeitet")
             return HttpResponseRedirect(reverse('members_overview'))
     else:
         form = MemberForm(instance=Member.objects.filter(id=id).get())
